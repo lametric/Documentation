@@ -3,10 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to LaMetric's documentation!
-====================================
+LaMetric Developer Documentation
+=================================
 
-Contents:
+Welcome to LaMetric developer documentation!
+
+Currently we are working on the documentation and will release it soon. Stay tuned for updates!
+
+
+.. Contents:
 
 .. toctree::
    :maxdepth: 2
