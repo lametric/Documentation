@@ -15,8 +15,16 @@ Currently we are working on the documentation and will release it soon. Stay tun
 
 .. toctree::
    :maxdepth: 2
+   :caption: Getting Started
 
+   getting-started/overview
 
+.. toctree::
+    :maxdepth: 1
+    :caption: Reference
+
+    reference-docs/lametric-cloud-reference
+    reference-docs/lametric-time-reference
 
 Indices and tables
 ==================
