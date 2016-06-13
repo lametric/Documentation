@@ -1,0 +1,6 @@
+*.iws
+*.tmproj
+*.iml
+.idea
+.DS_Store
+_build
