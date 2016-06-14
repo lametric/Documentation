@@ -1,6 +1,6 @@
 .. lametric-time-reference
     
-LaMetric Time API Documentation
+Device API Documentation
 ===============================
 
 This is where you can find API-level socumentation for sending notifications to LaMetric Time devices in local network.
