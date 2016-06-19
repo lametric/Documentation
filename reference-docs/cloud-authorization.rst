@@ -114,6 +114,41 @@ As soon as the user is authenticated and authorized your aplication, LaMetric Cl
 	http://redirect-uri/#access_token=ACCESS-TOKEN&expires_in=3600&token_type=Bearer&scope=SCOPE&state=STATE
 
 
+Refreshing Access Token
+-----------------------
+
+You should refresh access token as soon as it is expired. This is the HTTP response you get when access token is not valid anymore:
+::
+	HTTP/1.1 401 Unauthorized
+	Date: Fri, 17 Jun 2016 14:30:00 GMT
+	Server: Apache
+	X-Powered-By: PHP/5.4.45
+	Www-Authenticate: native
+	X-Powered-By: PleskLin
+	Connection: close
+	Transfer-Encoding: chunked
+	Content-Type: application/json; charset=UTF-8
+
+	{"errors":[{"message":"Unauthorized"}]}
+
+To refresh the token do POST request to the token API:
+::
+	curl -F 'client_id=CLIENT-ID' \
+	    -F 'client_secret=CLIENT-SECRET' \
+	    -F 'grant_type=refresh_token' \
+	    -F 'refresh_token=REFRESH-TOKEN' \
+	    https://lametric.uat.link/api/v2/oauth2/token
+
+An example response JSON may look like this: ::
+
+	{
+	    "access_token":"65764004f094639190b93d7e75e2c4dfa343f3c3",
+	    "expires_in":3600,
+	    "token_type":"Bearer",
+	    "scope":"basic devices_read",
+	    "refresh_token":"b463576cc489e4a3f4b913a2505726f97635f5e7"
+	}
+
 Scopes
 -------------
 
