@@ -14,4 +14,3 @@ This is where you can find API-level socumentation for sending notifications to 
     time-info
     time-notifications
 
-
