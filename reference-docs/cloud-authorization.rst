@@ -1,4 +1,4 @@
-.. cloud-authorization
+.. _cloud-authorization
     
 OAuth2 Authorization
 ====================

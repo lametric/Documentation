@@ -19,7 +19,7 @@ Parameters
 ==============  =====================================================================
 Parameter       Description                                                           
 ==============  =====================================================================
-page            Page number [1..n]                                                                   
+page            Page number [0..n-1]                                                                   
 --------------  ---------------------------------------------------------------------
 page_size       Number of items per page [1..total_icon_count]                                           
 --------------  ---------------------------------------------------------------------                         
@@ -91,14 +91,15 @@ Examples
 ^^^^^^^^
 
 **Request**
+::
 
-GET https://developer.lametric.com/api/v2/icons
+	GET https://developer.lametric.com/api/v2/icons
 
 
 **Response**
 
-200 OK
 ::
+	200 OK	
 
 	{
 	  "meta": {
@@ -143,13 +144,14 @@ GET https://developer.lametric.com/api/v2/icons
 
 
 **Request**
+::
 
-GET https://developer.lametric.com/api/v2/icons?page=1&page_size=2&fields=id,title,url&order=newest
+	GET https://developer.lametric.com/api/v2/icons?page=1&page_size=2&fields=id,title,url&order=newest
 
 **Response**
-
-200 OK
 ::
+	200 OK
+
 	{
 	  "meta": {
 	    "total_icon_count": 2676,
