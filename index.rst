@@ -8,7 +8,10 @@ LaMetric Developer Documentation
 
 Welcome to LaMetric developer documentation!
 
-Currently we are working on the documentation and will release it soon. Stay tuned for updates!
+We are constantly improving and expanding the docs so check back often!
+
+.. tip::
+   This documentation is opensource and available on `GitHub <https://github.com/lametric/Documentation>`__. So if you find a bug, typo or maybe can explain things better – don't hesitate to contribute!
 
 
 .. Contents:
@@ -25,11 +28,4 @@ Currently we are working on the documentation and will release it soon. Stay tun
 
     reference-docs/lametric-cloud-reference
     reference-docs/lametric-time-reference
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
