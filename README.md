@@ -1,6 +1,6 @@
 # LaMetric Time Developer Documentation
 
-This is the repository for the public LaMetric Time developer documentation.
+This is the repository for the public LaMetric Time developer documentation available [here](http://lametric-documentation.readthedocs.io/en/latest).
 
 This documentation is written using [reStructuredText](http://docutils.sourceforge.net/rst.html), powered by [Sphinx](http://www.sphinx-doc.org/en/stable/), and hosted on [ReadTheDocs](http://readthedocs.org).
 
