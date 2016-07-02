@@ -7,12 +7,12 @@ Overview
 --------
 The LaMetric API uses `OAuth 2.0 protocol <https://tools.ietf.org/html/draft-ietf-oauth-v2-12>`_ for simple but secure authentication and authorization. We support the most common OAuth 2.0 scenarios. Please keep in mind, that all requests to protected APIs must be made over SSL (https://).
 
-The LaMetric API requires authentication for the requests made on behalf of a user. Each such request require an **access_token**. They are unique nad should be stored securely. 
+The LaMetric API requires authentication for the requests made on behalf of a user. Each such request requires an **access_token**. Tokens are unique and should be stored securely. 
 
 Basic Steps
 ^^^^^^^^^^^
 
-All applications should follow a basic pattern when accessing a LaMetric API using OAuth 2.0. At high level you sould follow these four steps:
+All applications should follow a basic pattern when accessing a LaMetric API using OAuth 2.0. At high level you should follow these four steps:
 
 1. Obtain OAuth 2.0 credentials from the LaMetric Developer.
 ````````````````````````````````````````````````````````````
@@ -24,11 +24,11 @@ Your application must obtain an access token that grants access to specific API.
 
 3. Send the access token to an API.
 `````````````````````````````````````
-When access-token is obtained application must send it to the LaMetric API in an HTTP authorization header.
+When access-token is obtained your application must send it to the LaMetric API in an HTTP authorization header.
 
 4. Refresh the access token, if necessary.
 ```````````````````````````````````````````
-Access tokens have limited lifetime. If your applciation must have access to the API beyond that lifetime it should request and store refresh token. Refresh token allows application to reqeust new access tokens.
+Access tokens have limited lifetime. If your application must have access to the API beyond that lifetime it should request and store refresh token. Refresh token allows application to request new access tokens.
 
 Server Side (Explicit) Flow
 ----------------------------
