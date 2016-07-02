@@ -108,7 +108,7 @@ Returns array of Device objects.
 |api_key              |String         |Key that is used as access token to access          |
 |                     |               |device's API in local network                       |
 +---------------------+---------------+----------------------------------------------------+
-|ipv4_internal        |String         |IP address of the device in local nerwork           |
+|ipv4_internal        |String         |IP address of the device in local network           |
 +---------------------+---------------+----------------------------------------------------+
 |mac                  |String         |Mac address of the device                           |
 +---------------------+---------------+----------------------------------------------------+
@@ -175,7 +175,7 @@ Returns Device object.
 |api_key              |String         |Key that is used as access token to access          |
 |                     |               |device's API in local network                       |
 +---------------------+---------------+----------------------------------------------------+
-|ipv4_internal        |String         |IP address of the device in local nerwork           |
+|ipv4_internal        |String         |IP address of the device in local network           |
 +---------------------+---------------+----------------------------------------------------+
 |mac                  |String         |Mac address of the device                           |
 +---------------------+---------------+----------------------------------------------------+
