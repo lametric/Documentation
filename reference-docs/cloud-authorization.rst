@@ -137,7 +137,7 @@ To refresh the token do POST request to the token API:
 	    -F 'client_secret=CLIENT-SECRET' \
 	    -F 'grant_type=refresh_token' \
 	    -F 'refresh_token=REFRESH-TOKEN' \
-	    https://lametric.uat.link/api/v2/oauth2/token
+	    https://developer.lametric.com/api/v2/oauth2/token
 
 An example response JSON may look like this: ::
 
