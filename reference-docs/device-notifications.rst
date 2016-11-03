@@ -178,7 +178,7 @@ lifetime              Integer          *Optional.* Lifetime of the message in mi
 	        {
 	            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAUklEQVQYlWNUVFBgYGBgYBC98uE/AxJ4rSPAyMDAwMCETRJZjAnGgOlAZote+fCfCV0nOmA0+yKAYTwygJuAzQoGBgYGRkUFBQZ0dyDzGQl5EwCTESNpFb6zEwAAAABJRU5ErkJggg==",
 	            "text": "HELLO!"
-	        },
+	        }],
 	        "sound": {
 	    	    "category": "notifications",
 	            "id": "cat"
