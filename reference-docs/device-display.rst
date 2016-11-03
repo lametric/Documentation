@@ -21,7 +21,7 @@ Response
 Property                 Type           Description 
 =======================  =============  ============================================================================
 brightness               Integer        Brightness of the display. Valid values [0..100]
-brighrness_mode          Enum           ["auto", "manual"]
+brightness_mode          Enum           ["auto", "manual"]
 
 									    - *auto* – automatically adjust brightness
 									    - *manual* – brightness is configured by the user
