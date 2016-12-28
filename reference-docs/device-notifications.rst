@@ -259,7 +259,7 @@ Cancel or Dismiss Notification
 ------------------------------
 
 ==============  ===============================================
-URL             /api/v2/device/notifications
+URL             /api/v2/device/notifications/:id
 Method          DELETE
 Authorization   basic
 ==============  ===============================================
