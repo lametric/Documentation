@@ -1,4 +1,4 @@
-.. cloud_users
+.. cloud-users
     
 Users
 =====

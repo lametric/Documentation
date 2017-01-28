@@ -11,16 +11,24 @@ Welcome to LaMetric developer documentation!
 We are constantly improving and expanding the docs so check back often!
 
 .. tip::
-   This documentation is opensource and available on `GitHub <https://github.com/lametric/Documentation>`__. So if you find a bug, typo or maybe can explain things better – don't hesitate to contribute!
+    This documentation is opensource and available on `GitHub <https://github.com/lametric/Documentation>`__. So if you find a bug, typo or maybe can explain things better – don't hesitate to contribute!
 
 
 .. Contents:
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Getting Started
+    :maxdepth: 2
+    :caption: Getting Started
 
-   getting-started/overview
+    getting-started/overview
+
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Guides
+
+    guides/first-steps
+    
 
 .. toctree::
     :maxdepth: 1

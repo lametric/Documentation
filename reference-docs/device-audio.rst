@@ -1,3 +1,5 @@
+.. device-audio
+
 Audio
 =====
 

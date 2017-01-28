@@ -1,3 +1,5 @@
+.. device-wifi
+
 Wi-Fi
 =====
 

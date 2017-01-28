@@ -1,4 +1,4 @@
-.. cloud_icons
+.. cloud-icons
     
 Icons
 =====
