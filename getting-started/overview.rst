@@ -31,8 +31,8 @@ How it Works
 
 There are multiple ways of getting information onto LaMetric Time screen. Notification can be pushed in local network using Notification APP in combination with device REST API or to native LaMetric apps.
 
-LaMetric Notification APP + Local REST API
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LaMetric Notification via Local REST API
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This way of sending notifications to device is preferrable if:
 
 - Fast response time is required.
@@ -61,7 +61,7 @@ Create button app when:
 
 What's Next?
 ------------
-To start developing for LaMetric, login as a developer to `DevZone <https://developer.lametric.com>`_ and create new app. Also check out `LaMetric User Guide <http://lametric.com/user_guide.pdf>`_. In section 7 you will find answers to some frequent questions.
+To start developing for LaMetric, login as a developer to `DevZone <https://developer.lametric.com>`_ and create new app. Also check out `LaMetric User Guide <http://lametric.com/user_guide.pdf>`_. In section 7 you will find answers to some frequently asked questions. Also check our :doc:`../guides/first-steps` guide to learn more.
 
 
 
