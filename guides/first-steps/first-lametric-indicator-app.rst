@@ -58,7 +58,7 @@ Install your newly created app to your LaMetric Time device!
 
 At this stage it should be active on LaMetric Time, displaying default value.
 
-.. image:: ../../images/app-indicator-push/lm-value-0.jpg
+.. image:: ../../images/app-indicator-push/value-0.jpg
 
 3. Push some data!
 ^^^^^^^^^^^^^^^^^^
@@ -93,7 +93,7 @@ Let's copy and paste that into terminal app, change value of "text" attribute to
 
 If value has changed - congratulations! You have successfully created your first LaMetric Time app! If it didn't, make sure X-Access-Token and URL are specific to your app and valid.
 
-.. image:: ../../images/app-indicator-push/lm-value-1.jpg
+.. image:: ../../images/app-indicator-push/value-1.jpg
 
 Poll Indicator App
 ------------------
