@@ -29,7 +29,7 @@ API key can be found in `devices section <https://developer.lametric.com/user/de
 Send notification
 -----------------
 
-In order to send a notification you must do HTTP POST request to http://<lametric_time_ip_address>/api/v2/device/notifications endpoint with headers:
+In order to send a notification you must do HTTP POST request to http://<lametric_time_ip_address>:8080/api/v2/device/notifications endpoint with headers:
 
 *  Authorization: Basic <base64(dev:api_key)>
 *  Content-Type: application/json
