@@ -120,6 +120,7 @@ Refreshing Access Token
 You should refresh access token as soon as it is expired. This is the HTTP response you get when access token is not valid anymore:
 
 ::
+
     HTTP/1.1 401 Unauthorized
     Date: Fri, 17 Jun 2016 14:30:00 GMT
     Server: Apache

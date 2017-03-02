@@ -6,14 +6,14 @@ Notifications
 Endpoints
 ---------
 
-=========  ======================================  =========================================================
-Method     Path                                    Description
-=========  ======================================  =========================================================
-POST       /api/v2/device/notifications            Sends new notification to device
-GET        /api/v2/device/notifications            Returns the list of notifications in queue
-GET        /api/v2/device/notifications/:id        Returns specific notification
-DELETE     /api/v2/device/notifications/:id        Removes notification from queue or dismiss if it is visible
-=========  ======================================  =========================================================
+=========  =======================================================================  ========================================
+Method     Path                                                                     Description
+=========  =======================================================================  ========================================
+POST       `/api/v2/device/notifications <#display-notification>`_                  Sends new notification to device
+GET        `/api/v2/device/notifications <#get-notification-queue>`_                Returns the list of notifications in queue
+DELETE     `/api/v2/device/notifications/:id <#cancel-or-dismiss-notification>`_    Removes notification from queue or
+                                                                                    dismiss if it is visible
+=========  =======================================================================  ========================================
 
 ----
 
@@ -24,6 +24,7 @@ Display Notification
 URL             /api/v2/device/notifications
 Method          POST
 Authorization   basic
+Version         2.0.0
 ==============  ===============================================
 
 Description
@@ -32,17 +33,56 @@ Sends notification to the device.
 
 Body
 ^^^^
-You must send a Notification object.
+In order to send notification to a device you must post a Notification object.
+::
+
+        {
+          "priority": "[info|warning|critical]",
+          "icon_type":"[none|info|alert]",
+          "lifeTime":<milliseconds>,
+          "model": {
+           "frames": [
+            {
+               "icon":"<icon id or base64 encoded binary>",
+               "text":"<text>"
+            },
+            {
+              "icon":"i298",
+              "text":"text"
+            },
+            {
+                "icon":"i120",
+                "goalData":{
+                    "start": 0,
+                    "current": 50,
+                    "end": 100,
+                    "unit": "%"
+                }
+            },
+            {
+                "chartData": [ <comma separated integer values> ]
+            }
+            ],
+            "sound": {
+              "category":"[alarms|notifications]",
+                "id":"<sound_id>",
+                "repeat":<repeat count>
+            },
+            "cycles":<cycle count>
+          }
+        }
+
+
 
 **Notification object**
 
 ====================  ===============  ===========================================================
 Property              Type             Description
 ====================  ===============  ===========================================================
-model                 Object           Message structure and data.
-priority              Enum             *Optional.* Valid values are "info", "warning", "critical"
-icon_type             Enum             *Optional.* Valid values: "none", "info", "alert"
-lifetime              Integer          *Optional.* Lifetime of the message in milliseconds.
+``model``             Object           Message structure and data.
+``priority``          Enum             *Optional.* Valid values are ``info``, ``warning``, ``critical``
+``icon_type``         Enum             *Optional.* Valid values: ``none``, ``info``, ``alert```
+``lifetime``          Integer          *Optional.* Lifetime of the message in milliseconds.
 ====================  ===============  ===========================================================
 
 **Detailed Properties Description**
@@ -58,6 +98,14 @@ lifetime              Integer          *Optional.* Lifetime of the message in mi
             "icon":"<icon_id or binary>",
             "text":"Message"
          }
+
+        Binary icon string must be in this format (png)::
+
+           "data:image/png;base64,<base64 encoded png binary>"
+
+        or gif::
+
+           "data:image/gif;base64,<base64 encoded png binary>"
 
       - *goal* frame consists of icon and goal data. Example::
 
@@ -166,36 +214,72 @@ lifetime              Integer          *Optional.* Lifetime of the message in mi
     The time notification lives in queue to be displayed in milliseconds. Default lifetime is 2 minutes. If notification stayed in queue for longer than *lifetime* milliseconds – it will not be displayed.
 
 
-
-
-**Example**::
-
-	{
-	    "priority": "critical",
-	    "model": {
-	    	"cycles": 1,
-	        "frames": [ 
-	        {
-	            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAUklEQVQYlWNUVFBgYGBgYBC98uE/AxJ4rSPAyMDAwMCETRJZjAnGgOlAZote+fCfCV0nOmA0+yKAYTwygJuAzQoGBgYGRkUFBQZ0dyDzGQl5EwCTESNpFb6zEwAAAABJRU5ErkJggg==",
-	            "text": "HELLO!"
-	        },
-	        "sound": {
-	    	    "category": "notifications",
-	            "id": "cat"
-	        }
-	    }
-	}
-
-
 Response
 ^^^^^^^^
 Returns success object with notification id.
 
+::
+    {
+      "success": {
+        "id": "<notification id>"
+      }
+    }
 
-Response Example
-^^^^^^^^^^^^^^^^
 
-200 OK
+Example
+^^^^^^^
+
+**Request**
+
+REST::
+
+    POST https://<device ip address>:4343/api/v2/device/notifications
+
+    Content-Type: application/json
+    Accept: applciation/json
+    
+    {
+        "priority": "warning",
+        "model": {
+            "cycles": 1,
+            "frames": [ 
+               {
+                  "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAUklEQVQYlWNUVFBgYGBgYBC98uE/AxJ4rSPAyMDAwMCETRJZjAnGgOlAZote+fCfCV0nOmA0+yKAYTwygJuAzQoGBgYGRkUFBQZ0dyDzGQl5EwCTESNpFb6zEwAAAABJRU5ErkJggg==",
+                  "text": "HELLO!"
+               } 
+            ],
+            "sound": {
+                "category": "notifications",
+                "id": "cat"
+            }
+        }
+    }
+
+
+cURL::
+
+      $ curl -X POST -H -u "dev" -k \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/json" \
+        -d '{ 
+            "priority": "warning", 
+            "model": { 
+                "cycles": 1, 
+                "frames": [ 
+                {
+                    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAUklEQVQYlWNUVFBgYGBgYBC98uE/AxJ4rSPAyMDAwMCETRJZjAnGgOlAZote+fCfCV0nOmA0+yKAYTwygJuAzQoGBgYGRkUFBQZ0dyDzGQl5EwCTESNpFb6zEwAAAABJRU5ErkJggg==",
+                    "text": "HELLO!"
+                } ],
+                "sound": {
+                    "category": "notifications",
+                    "id": "cat"
+                }
+            }
+        }' \
+        https://<device ip address>:4343/api/v2/device/notifications
+      $ Enter host password for user 'dev': <device API key>
+
+**Response**
 ::
 
 	{
@@ -216,6 +300,7 @@ Get Notification Queue
 URL             /api/v2/device/notifications
 Method          GET
 Authorization   basic
+Version         2.0.0
 ==============  ===============================================
 
 Description
@@ -226,10 +311,54 @@ Returns the list of all notifications in the queue. Notifications with higher pr
 Response
 ^^^^^^^^
 Returns array of *Notification* objects with additional fields like *created*, *exporation_date* and *type*.
+::
+
+    [
+      {
+        "id": "<id>",
+        "type": "[internal|external]",
+        "priority": "[info|warning|critical]",
+        "created": "<isotime>",
+        "expiration_date": "<isotime>",
+        "model": {...}        
+      }
+    ]
+
+===================  =================  ==========================================================================
+Property             Type                 Description    
+===================  =================  ==========================================================================
+``id``               String             Notification id
+``type``             Enum               Notification type: ``internal`` or ``external``. 
+                                         - ``External`` ones come from API
+                                         - ``Internal`` ones come from native LaMetric Time apps
+``priority``         Enum               Notification priority:
+                                         - ``info`` - put into notification queue along with internal notifications
+                                         - ``warning`` - has higher priority than internal notifications
+                                         - ``critical`` - interrupts other notifications and wakes the device from
+                                        sleep (when screensaver is running)
+``created``          String             Time when notification was created in ISO format.
+``expiration_date``  String             Time when notification expires in ISO format.
+===================  =================  ==========================================================================
+
+Example
+^^^^^^^
+**Request**
+
+REST::
+    
+    GET https://<device ip address>:4343/api/v2/device/notifications
+
+    Accept: application/json
 
 
-Response Example
-^^^^^^^^^^^^^^^^
+cURL::
+
+    $ curl -X GET -H -k -u "dev" \
+      -H "Accept: application/json" \
+      https://<device ip address>:4343/api/v2/device/notifications
+    $ Enter host password for user 'dev': <device API key>
+
+**Response**
 
 200 OK
 ::
@@ -255,13 +384,14 @@ Response Example
 ----
 
 
-Cancel or Dismiss Notification
-------------------------------
+Cancel or Dismiss a Notification
+--------------------------------
 
 ==============  ===============================================
-URL             /api/v2/device/notifications
+URL             /api/v2/device/notifications/:id
 Method          DELETE
 Authorization   basic
+Version         2.0.0
 ==============  ===============================================
 
 Description
@@ -272,13 +402,41 @@ Removes notification from the queue or in case if it is already visible - dismis
 Response
 ^^^^^^^^
 Returns object with result.
+::
 
+    {
+      "success": true
+    }
 
-Response Example
-^^^^^^^^^^^^^^^^
+or ::
+
+    {
+      "errors": [
+        {
+            "message": "<error message>"
+        }
+      ]
+    }
+
+Example
+^^^^^^^
+
+**Request**
+
+REST::
+
+    DELETE https://<device ip address>:4343/api/v2/device/notifications/5
+
+cURL::
+
+    $ curl -X DELETE -u "dev" -k https://<device ip address>:4343/api/v2/device/notifications/5
+    $ Enter host password for user 'dev': <device API key>
+
+**Response**
 
 200 OK
 ::
+
 	{
 	  "success": true
 	}
