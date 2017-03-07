@@ -14,6 +14,7 @@ This is where you can find API-level documentation for sending notifications to 
     device-authorization
     device-endpoints
     device-state
+    device-apps
     device-notifications
     device-display
     device-audio
