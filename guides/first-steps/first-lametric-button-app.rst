@@ -3,14 +3,14 @@
 First Button App
 ================
 
-Button app is a native LaMetric Time app that allows to do things when you press an action button. We will use `zappier.com <http://zappier.com>`_ to demonstrate how it works. Zappier is a service that can do something (like send email) in response to some event. We will use LaMetric Time button app to trigger such an event.
+Button app is a native LaMetric Time app that allows to do things when you press an action button. We will use `zapier.com <http://zapier.com>`_ to demonstrate how it works. Zapier is a service that can do something (like send email) in response to some event. We will use LaMetric Time button app to trigger such an event.
 
 Let's create an app that will notify wife when you are going home.
 
 To do that, we will need to:
 
 #. Create "Button App" at `developer.lametric.com <https://developer.lametric.com>`_
-#. Create new Zapp (a.k. rule) at `zappier.com <http://zappier.com>`_
+#. Create new Zapp (a.k. rule) at `zapier.com <http://zapier.com>`_
 #. Publish you "Button App" and test how it works.
    
 So, let's get started!
@@ -25,9 +25,9 @@ Now add "message" parameter that will allow us to change the text that will be s
  
 .. image:: ../../images/app-button/devzone-step21.png
 
-As you noticed, now we need URL to put into "URL to be triggerd" field. This is when Zappier comes into play. 
+As you noticed, now we need URL to put into "URL to be triggerd" field. This is when Zapier comes into play. 
 
-Let's open `zappier.com <http://zappier.com>`_ in separate tab and proceed with creating new zap.
+Let's open `zapier.com <http://zapier.com>`_ in separate tab and proceed with creating new zap.
 
 .. image:: ../../images/app-button/zap-step1.png
 
@@ -35,7 +35,7 @@ Let's search for "webhooks" triggers. Webhook is an API that we can call from ou
 
 .. image:: ../../images/app-button/zap-step3.png
 
-Now choose "Catch Hook" and press "Save + Continue" button. This will tell Zappier to create an API endpoint for us that we will be able to call.
+Now choose "Catch Hook" and press "Save + Continue" button. This will tell Zapier to create an API endpoint for us that we will be able to call.
 
 .. image:: ../../images/app-button/zap-step4.png
 
@@ -66,11 +66,11 @@ Open LaMetric Time app, go to your device settings and press on "+" button. Choo
 .. image:: ../../images/app-button/app-step3.png
 .. image:: ../../images/app-button/app-step5.png
 
-Now check your device - you should see "Leve" text (the one we added during app creation). Let's press "Action" button for a few times. This will cause hook URL to be triggered and zappier will know it works.
+Now check your device - you should see "Leve" text (the one we added during app creation). Let's press "Action" button for a few times. This will cause hook URL to be triggered and zapier will know it works.
 
 .. image:: ../../images/app-button/device.jpg
 
-Let's get back to Zappier and continue with our zap. If you see "Test Successful" message - press "Continue". If not - try to press "Action" button on the device few more times. 
+Let's get back to Zapier and continue with our zap. If you see "Test Successful" message - press "Continue". If not - try to press "Action" button on the device few more times. 
 
 .. image:: ../../images/app-button/zap-step7.png
 
