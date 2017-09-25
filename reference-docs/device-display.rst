@@ -171,30 +171,31 @@ Body
 ^^^^
 ::
 
-	{
-    	"brightness": <0-100>,
-    	"brightness_mode": "[auto|manual]"    			
-	}
+    {
+        "brightness": <0-100>,
+        "brightness_mode": "[auto|manual]"
+    }
 
 Since API 2.1.0::
 
-	{
-    	"brightness": <0-100>,
-    	"brightness_mode": "[auto|manual]",
-    	"screensaver": {
-    		"enabled": [true|false],
-    		"modes": {
-    			"when_dark": {
-    				"enabled": [true|false]
-    			}
-			}
-		}
-	}
+    {
+        "brightness": <0-100>,
+        "brightness_mode": "[auto|manual]",
+        "screensaver": {
+            "enabled": [true|false],
+            "mode": ["when_dark"|"time_based"]
+            "mode_params": {
+                "enabled": [true|false],
+                "start_time": "21:00:00",
+                "end_time": "06:00:00"
+            }
+        }
+    }
 
-Example
-^^^^^^^
+Examples
+^^^^^^^^
 
-Let's set auto brightness and enable screensaver in mode "when dark":
+Example 1. Let's set auto brightness and enable screensaver in mode "when dark":
 
 **Request**
 
@@ -209,10 +210,9 @@ REST::
         "brightness_mode": "auto",
         "screensaver": {
             "enabled" : true,
-            "modes": {
-                "when_dark": {
-                    "enabled": true
-                }
+            "mode": "when_dark",
+            "mode_params": {
+                "enabled": true
             }
         }
     }
@@ -223,40 +223,39 @@ cURL::
       -H "Accept: application/json" 
       -H "Content-Type: application/json" \
       -d '{
-            "brightness_mode":"auto",
+            "brightness_mode": "auto",
             "screensaver": {
-            "enabled":true,
-            "modes": {
-                "when_dark" : {
-                "enabled" : true
-              }
+                "enabled" : true,
+                "mode": "when_dark",
+                "mode_params": {
+                    "enabled": true
+                }
             }
-          }
         }' https://<device ip address>:4343/api/v2/device/display
-    $ 
+    $ Enter host password for user 'dev': <device API key>
 
 
 **Response**
 ::
 	
-	HTTP/1.1 200 OK
-	CONTENT-TYPE: application/json;charset=UTF8
-	Transfer-Encoding: chunked
-	Date: Wed, 29 Jun 2016 14:25:48 GMT
-	Server: lighttpd/1.4.35
+    HTTP/1.1 200 OK
+    CONTENT-TYPE: application/json;charset=UTF8
+    Transfer-Encoding: chunked
+    Date: Wed, 29 Jun 2016 14:25:48 GMT
+    Server: lighttpd/1.4.35
 
-	{ 
-	    "success" : { 
-	        "data" : { 
-	            "brightness" : 50, 
-	            "brightness_mode" : "manual", 
-	            "height" : 8, 
-	            "type" : "mixed", 
-	            "width" : 37 
-	        }, 
-	        "path" : "/api/v2/device/display" 
-	    } 
-	}
+    {
+        "success": {
+            "data": {
+                "brightness": 40,
+                "brightness_mode": "auto",
+                "height": 8,               
+                "type": "mixed",
+                "width": 37
+            },
+            "path": "/api/v2/device/display"
+        }
+    }
 
 Since API 2.1.0::
 
@@ -266,29 +265,130 @@ Since API 2.1.0::
     Date: Thu, 02 Mar 2017 16:24:18 GMT
     Server: lighttpd/1.4.35
 
-    { 
-        "success" : { 
-            "data" : { 
-                "brightness" : 100, 
-                "brightness_mode" : "auto", 
-                "height" : 8, 
-                "width" : 37,
-                "type" : "mixed", 
-                "screensaver" : { 
-                    "enabled" : true, 
-                    "modes" : { 
-                        "when_dark" : { 
-                            "enabled" : true 
-                        }, 
-                        "time_based" : { 
-                            "enabled" : false, 
-                            "end_time" : "00:00:00", 
-                            "start_time" : "00:00:00" 
+    {
+        "success": {
+            "data": {
+                "type": "mixed",
+                "width": 37
+                "height": 8,
+                "brightness": 40,
+                "brightness_mode": "auto",                
+                "screensaver": {
+                    "enabled": true,
+                    "modes": {
+                        "time_based": {
+                            "enabled": false,
+                            "end_time": "19:59:59",
+                            "start_time": "20:00:00"
+                        },
+                        "when_dark": {
+                            "enabled": true
                         }
-                    }, 
-                    "widget" : "08b8eac21074f8f7e5a29f2855ba8060" 
+                    },
+                    "widget": "08b8eac21074f8f7e5a29f2855ba8060"
+                },
+
+            },
+            "path": "/api/v2/device/display"
+        }
+    }
+
+Example 2. Let's set time based screensaver from 9:00 PM to 6:00 AM.
+
+**Request**
+
+REST::
+    
+    PUT https://<device ip address>:4343/api/v2/device/display
+
+    Content-Type: application/json
+    Accept: application/json
+
+    {
+        "screensaver": {
+            "enabled" : true,
+            "mode": "time_based",
+            "mode_params": {
+                "enabled": true,
+                "start_time": "21:00:00",
+                "end_time": "06:00:00"
+            }
+        }
+    }
+
+cURL::
+
+    $ curl -X PUT -k -u "dev" \
+      -H "Accept: application/json" 
+      -H "Content-Type: application/json" \
+      -d '{
+            "screensaver": {
+                "enabled" : true,
+                "mode": "time_based",
+                "mode_params": {
+                    "enabled": true,
+                    "start_time": "21:00:00",
+                    "end_time": "06:00:00"
                 }
-            }, 
-            "path" : "/api/v2/device/display" 
-        } 
+            }
+        }' https://<device ip address>:4343/api/v2/device/display
+    $ Enter host password for user 'dev': <device API key>
+
+
+**Response**
+::
+    
+    HTTP/1.1 200 OK
+    CONTENT-TYPE: application/json;charset=UTF8
+    Transfer-Encoding: chunked
+    Date: Wed, 29 Jun 2016 14:25:48 GMT
+    Server: lighttpd/1.4.35
+
+    {
+        "success": {
+            "data": {
+                "brightness": 40,
+                "brightness_mode": "auto",
+                "height": 8,               
+                "type": "mixed",
+                "width": 37
+            },
+            "path": "/api/v2/device/display"
+        }
+    }
+
+Since API 2.1.0::
+
+    HTTP/1.1 200 OK
+    CONTENT-TYPE: application/json;charset=UTF8
+    Transfer-Encoding: chunked
+    Date: Thu, 02 Mar 2017 16:24:18 GMT
+    Server: lighttpd/1.4.35
+
+    {
+        "success": {
+            "data": {
+                "type": "mixed",
+                "width": 37
+                "height": 8,
+                "brightness": 100,
+                "brightness_mode": "auto",                
+                "screensaver": {
+                    "enabled": true,
+                    "modes": {
+                        "time_based": {
+                            "enabled": true,
+                            "start_time": "21:00:00"
+                            "end_time": "06:00:00",
+                        },
+                        "when_dark": {
+                            "enabled": false
+                        }
+                    },
+                    "widget": "08b8eac21074f8f7e5a29f2855ba8060"
+                },
+
+            },
+            "path": "/api/v2/device/display"
+        }
     }
