@@ -4,3 +4,7 @@
 .idea
 .DS_Store
 _build
+_build.zip
+docs.sublime-project
+docs.sublime-workspace
+index.sublime-workspace
