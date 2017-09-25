@@ -20,7 +20,7 @@ Developer Highlights
 LaMetric aims to be developer friendly platform. Key developer features:
 
 - Simple REST API to send notifications to device in local network (no need to install apps on LaMetric) and get its state.
-- Easy LaMetric app creation that does not require development (IDE can be fount at https://developer.lametric.com)
+- Easy LaMetric app creation that does not require development (IDE can be found at https://developer.lametric.com)
 - Web based simulator is available to help you test your app.
 - Growing LaMetric Time `community <https://lametric.freshdesk.com/discussions>`_
 

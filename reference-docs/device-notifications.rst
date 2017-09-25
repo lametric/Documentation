@@ -99,6 +99,8 @@ Property              Type             Description
             "text":"Message"
          }
 
+        Icon can be defined as ID or in binary format. 
+        Icon ID looks like <prefix>XXX, where <prefix> is "i" (for static icon) or "a" (for animation). XXX - is the number of the icon and can be found at https://developer.lametric.com/icons or via `Icons API <cloud-icons.html>`_.
         Binary icon string must be in this format (png)::
 
            "data:image/png;base64,<base64 encoded png binary>"
@@ -217,8 +219,8 @@ Property              Type             Description
 Response
 ^^^^^^^^
 Returns success object with notification id.
-
 ::
+
     {
       "success": {
         "id": "<notification id>"
