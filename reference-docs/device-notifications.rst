@@ -1,5 +1,5 @@
 .. device-notifications
-    
+
 Notifications
 =============
 
@@ -87,19 +87,19 @@ Property              Type             Description
 
 **Detailed Properties Description**
 
-- model 
+- model
    Object that represents message structure and data. It consists of "frames", "sound" and "cycles" properties.
 
    - *frames* – array, that describes the notification structure. Single frame can be *simple*, *goal* or *spike chart*.
-      
+
       - *simple* frame consists of icon and text. Example::
-       
+
          {
             "icon":"<icon_id or binary>",
             "text":"Message"
          }
 
-        Icon can be defined as ID or in binary format. 
+        Icon can be defined as ID or in binary format.
         Icon ID looks like <prefix>XXX, where <prefix> is "i" (for static icon) or "a" (for animation). XXX - is the number of the icon and can be found at https://developer.lametric.com/icons or via `Icons API <cloud-icons.html>`_.
         Binary icon string must be in this format (png)::
 
@@ -107,11 +107,11 @@ Property              Type             Description
 
         or gif::
 
-           "data:image/gif;base64,<base64 encoded png binary>"
+           "data:image/gif;base64,<base64 encoded gif binary>"
 
       - *goal* frame consists of icon and goal data. Example::
 
-         { 
+         {
            "icon":"i120",
            "goalData":{
              "start": 0,
@@ -121,7 +121,7 @@ Property              Type             Description
             }
          }
 
-      - *spike chart* consists of array of numbers and is displayed as graph. Example:: 
+      - *spike chart* consists of array of numbers and is displayed as graph. Example::
 
          {
             "chartData": [ 1, 2, 3, 4, 5, 6, 7 ]
@@ -139,14 +139,14 @@ Property              Type             Description
 
      - *category* – sound category. Can be *notifications* or *alarms*.
      - *id* – sound ID. Full list of notification ids::
-			
-		bicycle         
-		car            
-		cash           
-		cat             
-		dog             
-		dog2           
-		energy         
+
+		bicycle
+		car
+		cash
+		cat
+		dog
+		dog2
+		energy
 		knock-knock
 		letter_email
 		lose1
@@ -190,7 +190,7 @@ Property              Type             Description
 		alarm10
 		alarm11
 		alarm12
-		alarm13       
+		alarm13
 
      - *repeat* – defines the number of times sound must be played. If set to 0 sound will be played until notification is dismissed. By default the value is set to 1.
 
@@ -198,7 +198,7 @@ Property              Type             Description
 
 - priority
    Priority of the message
-   
+
    - *info* – this priority means that notification will be displayed on the same "level" as all other notifications on the device that come from apps (for example facebook app). This notification will not be shown when screensaver is active. By default message is sent with "info" priority. This level of notification should be used for notifications like news, weather, temperature, etc.
 
    - *warning* – notifications with this priority will interrupt ones sent with lower priority ("info"). Should be used to notify the user about something important but not critical. For example, events like "someone is coming home" should use this priority when sending notifications from smart home.
@@ -239,16 +239,16 @@ REST::
 
     Content-Type: application/json
     Accept: applciation/json
-    
+
     {
         "priority": "warning",
         "model": {
             "cycles": 1,
-            "frames": [ 
+            "frames": [
                {
                   "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAUklEQVQYlWNUVFBgYGBgYBC98uE/AxJ4rSPAyMDAwMCETRJZjAnGgOlAZote+fCfCV0nOmA0+yKAYTwygJuAzQoGBgYGRkUFBQZ0dyDzGQl5EwCTESNpFb6zEwAAAABJRU5ErkJggg==",
                   "text": "HELLO!"
-               } 
+               }
             ],
             "sound": {
                 "category": "notifications",
@@ -263,11 +263,11 @@ cURL::
       $ curl -X POST -H -u "dev" -k \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
-        -d '{ 
-            "priority": "warning", 
-            "model": { 
-                "cycles": 1, 
-                "frames": [ 
+        -d '{
+            "priority": "warning",
+            "model": {
+                "cycles": 1,
+                "frames": [
                 {
                     "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAUklEQVQYlWNUVFBgYGBgYBC98uE/AxJ4rSPAyMDAwMCETRJZjAnGgOlAZote+fCfCV0nOmA0+yKAYTwygJuAzQoGBgYGRkUFBQZ0dyDzGQl5EwCTESNpFb6zEwAAAABJRU5ErkJggg==",
                     "text": "HELLO!"
@@ -322,15 +322,15 @@ Returns array of *Notification* objects with additional fields like *created*, *
         "priority": "[info|warning|critical]",
         "created": "<isotime>",
         "expiration_date": "<isotime>",
-        "model": {...}        
+        "model": {...}
       }
     ]
 
 ===================  =================  ==========================================================================
-Property             Type                 Description    
+Property             Type                 Description
 ===================  =================  ==========================================================================
 ``id``               String             Notification id
-``type``             Enum               Notification type: ``internal`` or ``external``. 
+``type``             Enum               Notification type: ``internal`` or ``external``.
                                          - ``External`` ones come from API
                                          - ``Internal`` ones come from native LaMetric Time apps
 ``priority``         Enum               Notification priority:
@@ -347,7 +347,7 @@ Example
 **Request**
 
 REST::
-    
+
     GET https://<device ip address>:4343/api/v2/device/notifications
 
     Accept: application/json

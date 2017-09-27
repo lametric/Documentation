@@ -71,30 +71,30 @@ For more details check `Authorization <device-authorization.html>`_ section.
 LaMetric Time public API is located on ports 8080 and 4343. You should have api_key to access it (see `Authorization <device-authorization.html>`_ section for more details).
 
 
-1.3. If you have api_key on this sstage you can check if LaMetric Time API works. ::
+1.3. If you have api_key on this stage you can check if LaMetric Time API works. ::
 
-	curl -i -H "Authorization: Basic dXNlcjpiZTBmNTNhYTQ1NzdjMzUxMDE3OGY2Mzc3Yjk3NTEwY2U0ZTA2ZGQ3ZTBjYTlkMDRjNDMyMDRiY2RlZTllMjY2" 
+	curl -i -H "Authorization: Basic dXNlcjpiZTBmNTNhYTQ1NzdjMzUxMDE3OGY2Mzc3Yjk3NTEwY2U0ZTA2ZGQ3ZTBjYTlkMDRjNDMyMDRiY2RlZTllMjY2"
 	http://192.168.88.153:8080/api/v2
-	
+
 	HTTP/1.1 200 OK
 	CONTENT-TYPE: application/json;charset=UTF8
 	Transfer-Encoding: chunked
 	Date: Tue, 28 Jun 2016 17:36:54 GMT
 	Server: lighttpd/1.4.35
 
-	{ 
-	  "api_version" : "2.0.0", 
-	  "endpoints" : { 
-	    "audio_url" : "http://192.168.88.153:8080/api/v2/device/audio", 
-	    "bluetooth_url" : "http://192.168.88.153:8080/api/v2/device/bluetooth", 
+	{
+	  "api_version" : "2.0.0",
+	  "endpoints" : {
+	    "audio_url" : "http://192.168.88.153:8080/api/v2/device/audio",
+	    "bluetooth_url" : "http://192.168.88.153:8080/api/v2/device/bluetooth",
 	    "concrete_notification_url" : "http://192.168.88.153:8080/api/v2/device/notifications{/:id}",
-	    "current_notification_url" : "http://192.168.88.153:8080/api/v2/device/notifications/current", 
-	    "device_url" : "http://192.168.88.153:8080/api/v2/device", 
-	    "display_url" : "http://192.168.88.153:8080/api/v2/device/display", 
-	    "notifications_url" : "http://192.168.88.153:8080/api/v2/device/notifications", 
-	    "widget_update_url" : "http://192.168.88.153:8080/api/v2/widget/update{/:id}", 
-	    "wifi_url" : "http://192.168.88.153:8080/api/v2/device/wifi" 
-	  } 
+	    "current_notification_url" : "http://192.168.88.153:8080/api/v2/device/notifications/current",
+	    "device_url" : "http://192.168.88.153:8080/api/v2/device",
+	    "display_url" : "http://192.168.88.153:8080/api/v2/device/display",
+	    "notifications_url" : "http://192.168.88.153:8080/api/v2/device/notifications",
+	    "widget_update_url" : "http://192.168.88.153:8080/api/v2/widget/update{/:id}",
+	    "wifi_url" : "http://192.168.88.153:8080/api/v2/device/wifi"
+	  }
 	}
 
 We recommend to use secure way of accessing the API via https using port 4343::
@@ -108,23 +108,19 @@ We recommend to use secure way of accessing the API via https using port 4343::
 	Date: Tue, 28 Jun 2016 17:51:25 GMT
 	Server: lighttpd/1.4.35
 
-	{ 
-	  "api_version" : "2.0.0", 
-	  "endpoints" : { 
-	    "audio_url" : "https://192.168.88.153:4343/api/v2/device/audio", 
-	    "bluetooth_url" : "https://192.168.88.153:4343/api/v2/device/bluetooth", 
-	    "concrete_notification_url" : "https://192.168.88.153:4343/api/v2/device/notifications{/:id}", 
-	    "current_notification_url" : "https://192.168.88.153:4343/api/v2/device/notifications/current", 
-	    "device_url" : "https://192.168.88.153:4343/api/v2/device", 
-	    "display_url" : "https://192.168.88.153:4343/api/v2/device/display", 
-	    "notifications_url" : "https://192.168.88.153:4343/api/v2/device/notifications", 
-	    "widget_update_url" : "https://192.168.88.153:4343/api/v2/widget/update{/:id}", 
-	    "wifi_url" : "https://192.168.88.153:4343/api/v2/device/wifi" 
-	  } 
+	{
+	  "api_version" : "2.0.0",
+	  "endpoints" : {
+	    "audio_url" : "https://192.168.88.153:4343/api/v2/device/audio",
+	    "bluetooth_url" : "https://192.168.88.153:4343/api/v2/device/bluetooth",
+	    "concrete_notification_url" : "https://192.168.88.153:4343/api/v2/device/notifications{/:id}",
+	    "current_notification_url" : "https://192.168.88.153:4343/api/v2/device/notifications/current",
+	    "device_url" : "https://192.168.88.153:4343/api/v2/device",
+	    "display_url" : "https://192.168.88.153:4343/api/v2/device/display",
+	    "notifications_url" : "https://192.168.88.153:4343/api/v2/device/notifications",
+	    "widget_update_url" : "https://192.168.88.153:4343/api/v2/widget/update{/:id}",
+	    "wifi_url" : "https://192.168.88.153:4343/api/v2/device/wifi"
+	  }
 	}
 
 ``--insecure`` option must be added because of the random IP address LaMetric may have, and it is not possible to verify  host stored inside the certificate.
-
-
-
-

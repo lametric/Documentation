@@ -12,7 +12,7 @@ To do that, we will need to:
 #. Create "Button App" at `developer.lametric.com <https://developer.lametric.com>`_
 #. Create new Zapp (a.k. rule) at `zapier.com <http://zapier.com>`_
 #. Publish you "Button App" and test how it works.
-   
+
 So, let's get started!
 
 Create Button App
@@ -22,10 +22,10 @@ Start by logging in to your `developer account <https://developer.lametric.com>`
 .. image:: ../../images/app-button/devzone-step1.png
 
 Now add "message" parameter that will allow us to change the text that will be sent. Choose icon and enter text that will be displayed on the LaMetric Time when app is active.
- 
+
 .. image:: ../../images/app-button/devzone-step21.png
 
-As you noticed, now we need URL to put into "URL to be triggerd" field. This is when Zapier comes into play. 
+As you noticed, now we need URL to put into "URL to be triggerd" field. This is when Zapier comes into play.
 
 Let's open `zapier.com <http://zapier.com>`_ in separate tab and proceed with creating new zap.
 
@@ -43,7 +43,7 @@ At this step enter parameter name we added to our button app - "message".
 
 .. image:: ../../images/app-button/zap-step5.png
 
-After this step you have the hook URL we can use in our button app. Copy it by pressing on "Copy to clipboard button". 
+After this step you have the hook URL we can use in our button app. Copy it by pressing on "Copy to clipboard button".
 
 .. image:: ../../images/app-button/zap-step6.png
 
@@ -70,7 +70,7 @@ Now check your device - you should see "Leve" text (the one we added during app 
 
 .. image:: ../../images/app-button/device.jpg
 
-Let's get back to Zapier and continue with our zap. If you see "Test Successful" message - press "Continue". If not - try to press "Action" button on the device few more times. 
+Let's get back to Zapier and continue with our zap. If you see "Test Successful" message - press "Continue". If not - try to press "Action" button on the device few more times.
 
 .. image:: ../../images/app-button/zap-step7.png
 
@@ -83,11 +83,16 @@ Login to you Gmail account and select it when asked, followed by "Save + Continu
 .. image:: ../../images/app-button/zap-step9.png
 
 Lets fill out the e-mail form:
-to: wife@home.com - this may be your wives e-mail address.
-reply to: me@work.com - this is your e-mail address.
-from name: John - your name
-subject: I'm on my way!
-Body: here choose Querystring Message parameter. It will get replaced by the message from our app.
+
+:To: wife@home.com
+  (this may be your wives e-mail address)
+:Reply to: me@work.com
+  (this is your e-mail addres)
+:From name: John
+  (your name)
+:Subject: I'm on my way!
+  (subject of email)
+:Body: here choose Querystring Message parameter. It will get replaced by the message from our app.
 
 .. image:: ../../images/app-button/zap-step10.png
 .. image:: ../../images/app-button/zap-step11.png
@@ -108,11 +113,11 @@ Final touch, lets choose the name for our zap - "Wife Notifier" would be good.
 
 .. image:: ../../images/app-button/zap-step16.png
 
-That's it! You have created your first zap - rule that sends e-mail to your wife when you click button on your LaMetric Time! 
+That's it! You have created your first zap - rule that sends e-mail to your wife when you click button on your LaMetric Time!
 
 .. image:: ../../images/app-button/zap-step17.png
 
-Let's press the action button..... 
+Let's press the action button.....
 
 .. image:: ../../images/app-button/device.jpg
 
@@ -121,4 +126,3 @@ Ding! It works!
 .. image:: ../../images/app-button/app-step6.png
 
 Hope you enjoyed the tutorial. Let us know if you find any issues, typos or other issues. Thanks!
-
