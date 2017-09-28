@@ -444,7 +444,7 @@ Here are some actions of preinstalled apps:
 **App Name**           **Package**                **Action Id**
 ---------------------- -------------------------- ------------------------------------------------------
 Alarm Clock            ``com.lametric.clock``     | ``clock.alarm`` - configure alarm clock  
-                                                  | ``clock.clockface`` - sets or updates clock face
+                                                  | ``clock.clockface`` - sets or updates a clock face
 
 Radio                  ``com.lametric.radio``     | ``radio.play`` - start playback
                                                   | ``radio.stop`` - stop playback
@@ -493,7 +493,7 @@ Some actions have parameters, for example ``clock.alarm``, ``clock.clockface`` a
     {
       "id":"clock.clockface",
       "params": {
-        "icon":""
+        "icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOklEQVQYlWNUVFBgwAeYcEncv//gP04FMEmsCmCSiooKjHAFMEF0SRQTsEnCFcAE0SUZGBgYGAl5EwA+6RhuHb9bggAAAABJRU5ErkJggg=="
       }
     }
 
