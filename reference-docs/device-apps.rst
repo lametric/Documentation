@@ -444,6 +444,7 @@ Here are some actions of preinstalled apps:
 **App Name**           **Package**                **Action Id**
 ---------------------- -------------------------- ------------------------------------------------------
 Alarm Clock            ``com.lametric.clock``     | ``clock.alarm`` - configure alarm clock  
+                                                  | ``clock.clockface`` - sets or updates clock face
 
 Radio                  ``com.lametric.radio``     | ``radio.play`` - start playback
                                                   | ``radio.stop`` - stop playback
@@ -462,7 +463,7 @@ Stopwatch              ``com.lametric.stopwatch`` | ``stopwatch.start`` - starts
 Weather                ``com.lametric.weather``   | ``weather.forecast`` - displays weather forecast 
 ====================== ========================== ======================================================
 
-Some actions have parameters, for example ``clock.alarm`` and ``countdown.configure``.
+Some actions have parameters, for example ``clock.alarm``, ``clock.clockface`` and ``countdown.configure``.
 
 
 **Action "clock.alarm"**
@@ -485,6 +486,25 @@ Some actions have parameters, for example ``clock.alarm`` and ``countdown.config
 ``time``             String            Optional. Local time in format "HH:mm:ss".
 ``wake_with_radio``  Boolean           Optional. If true, radio will be activated when alarm goes off.
 ==================== ================= =======================================================================
+
+**Action "clock.clockface"**
+::
+  
+    {
+      "id":"clock.clockface",
+      "params": {
+        "icon":""
+      }
+    }
+
+
+==================== ================= =======================================================================
+**Parameter**        **Format**        **Description**
+-------------------- ----------------- -----------------------------------------------------------------------
+``icon``             String            Optional. Icon data in format "data:image/png;base64,<base64 encoded png binary>"
+                                       or "data:image/gif;base64,<base64 encoded gif binary>"
+==================== ================= =======================================================================
+
 
 
 **Action "countdown.configure"**
