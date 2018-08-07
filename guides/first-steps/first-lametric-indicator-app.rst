@@ -78,7 +78,7 @@ Fortunately, there is curl example already on your app details page. Lets see ho
         "frames": [
             {
                 "text": "0",
-                "icon": "i3219"
+                "icon": 3219
             }
         ]
     }' \
@@ -109,7 +109,7 @@ Prepare our backend by creating and uploading file named `data.json` to DropBox 
     {
         "frames": [
             {
-                "icon":"i3219",
+                "icon":3219,
                 "text":"2"
             }
         ]

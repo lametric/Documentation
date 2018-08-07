@@ -40,7 +40,7 @@ and body: ::
        "model": { 
             "frames": [ 
                 { 
-                   "icon":"a2867", 
+                   "icon":2867, 
                    "text":"Hello!"
                 } 
             ] 

@@ -47,11 +47,11 @@ In order to send notification to a device you must post a Notification object.
                "text":"<text>"
             },
             {
-              "icon":"i298",
+              "icon": 298,
               "text":"text"
             },
             {
-                "icon":"i120",
+                "icon": 120,
                 "goalData":{
                     "start": 0,
                     "current": 50,
@@ -112,7 +112,7 @@ Property              Type             Description
       - *goal* frame consists of icon and goal data. Example::
 
          {
-           "icon":"i120",
+           "icon":120,
            "goalData":{
              "start": 0,
              "current": 50,
