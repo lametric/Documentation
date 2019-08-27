@@ -493,7 +493,8 @@ Some actions have parameters, for example ``clock.alarm``, ``clock.clockface`` a
     {
       "id":"clock.clockface",
       "params": {
-        "icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOklEQVQYlWNUVFBgwAeYcEncv//gP04FMEmsCmCSiooKjHAFMEF0SRQTsEnCFcAE0SUZGBgYGAl5EwA+6RhuHb9bggAAAABJRU5ErkJggg=="
+        "icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOklEQVQYlWNUVFBgwAeYcEncv//gP04FMEmsCmCSiooKjHAFMEF0SRQTsEnCFcAE0SUZGBgYGAl5EwA+6RhuHb9bggAAAABJRU5ErkJggg==",
+        "type" : "custom"
       }
     }
 
@@ -503,6 +504,7 @@ Some actions have parameters, for example ``clock.alarm``, ``clock.clockface`` a
 -------------------- ----------------- -----------------------------------------------------------------------
 ``icon``             String            Optional. Icon data in format "data:image/png;base64,<base64 encoded png binary>"
                                        or "data:image/gif;base64,<base64 encoded gif binary>"
+``type``             String            Optional. Specifies the clockface type. Possible values are "weather", "page_a_day", "custom" and "none".
 ==================== ================= =======================================================================
 
 
