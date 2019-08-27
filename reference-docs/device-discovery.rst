@@ -73,8 +73,7 @@ LaMetric Time public API is located on ports 8080 and 4343. You should have api_
 
 1.3. If you have api_key on this stage you can check if LaMetric Time API works. ::
 
-	curl -i -H "Authorization: Basic dXNlcjpiZTBmNTNhYTQ1NzdjMzUxMDE3OGY2Mzc3Yjk3NTEwY2U0ZTA2ZGQ3ZTBjYTlkMDRjNDMyMDRiY2RlZTllMjY2"
-	http://192.168.88.153:8080/api/v2
+	curl -i	http://192.168.88.153:8080/api/v2 --user dev:<api_key>
 
 	HTTP/1.1 200 OK
 	CONTENT-TYPE: application/json;charset=UTF8
