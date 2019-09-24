@@ -434,9 +434,12 @@ To execute an action just send an Action object in the body of the request to th
 ::
   
     {
-      "id" : "<action_id>"    
+      "id" : "<action_id>",
+      "params": {},
+      "activate": true|false
     }
 
+Parameter "activate" controls whether widget should become visible when the action is invoked.
 
 Here are some actions of preinstalled apps:
 
@@ -495,7 +498,8 @@ Some actions have parameters, for example ``clock.alarm``, ``clock.clockface`` a
       "params": {
         "icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOklEQVQYlWNUVFBgwAeYcEncv//gP04FMEmsCmCSiooKjHAFMEF0SRQTsEnCFcAE0SUZGBgYGAl5EwA+6RhuHb9bggAAAABJRU5ErkJggg==",
         "type" : "custom"
-      }
+      },
+      "activate": true
     }
 
 
