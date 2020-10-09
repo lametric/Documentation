@@ -5,11 +5,11 @@ First Indicator App
 
 Indicator app is a native LaMetric Time app that is useful for displaying icons, numbers, text and charts that must stay on the device at all times.
 
-There are two ways you can deliver data to the app – push and poll. "Push" means you can send data to the app and it will be delivered immediately. "Poll" app will poll for the data with some predefined time interval. 
+There are two ways you can deliver data to the app – push and poll. "Push" means you can send data to the app in your local network and it will be delivered immediately. "Poll" app will poll for the data with some predefined time interval in local network or from the Internet. 
 
-Push Indicator App
-------------------
-Use "push" communication type when data is not changing too often and you want it to be updated as soon as it changes. Let's create the simplest indicator app and see how it works.
+Local Push Indicator App
+------------------------
+Use "Local Push" communication type when data is not changing too often and you want it to be updated as soon as it changes. Let's create the simplest indicator app and see how it works.
 
 1. Create Indicator App
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -17,11 +17,11 @@ Start by logging in to your `developer account <https://developer.lametric.com>`
 
 .. image:: ../../images/app-indicator-push/step1.png
 
-Choose icon for your app. It will represent what we are trying to keep track of.
+Choose an icon for your app. It will represent what we are trying to keep track of.
 
 .. image:: ../../images/app-indicator-push/step2.png
 
-You can choose existing one or create icon yourself. It will be available to the whole community.
+You can choose existing one or create the icon for yourself. It will be available to the whole community.
 
 .. image:: ../../images/app-indicator-push/step3.png
 
@@ -29,34 +29,34 @@ Enter initial value that will be displayed by default.
 
 .. image:: ../../images/app-indicator-push/step4.png
 
-Choose "Push" communication type as we are going to push data to the app.
+Choose "Local Push" communication type as we are going to push the data to the app.
 
 .. image:: ../../images/app-indicator-push/step5.png
 
-Go to next step by clicking on the "Next" button.
+Go to the next step by clicking on the "Next" button.
 
 .. image:: ../../images/app-indicator-push/step6.png
 
-Now enter the name and description for your app. You'll find it in `Appstore <http://apps.lametric.com>`_ and LaMetric Time app.
+Now enter the name and description for your app. You'll find it in `LaMetric Market <http://apps.lametric.com>`_ and LaMetric Time app.
 
 .. image:: ../../images/app-indicator-push/step7.png
 
-Once app is saved you will be presented with push URL, access token and data format. Now you have all the information to start delivering some data.
+Once the app is saved you will be presented with local push URL, access token and data format. Now you have all the information to start delivering some data.
 
-2. Publish app and install it to your LaMetric Time
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Let's click that "Publish" button at the top and wait for confirmation email. It should take no longer than two minutes for the e-mail to reach your inbox.
+2. Publish the app and install it to your LaMetric Time
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Let's click that "Publish" button at the top and wait for a confirmation email. It should take no longer than two minutes for the e-mail to reach your inbox. Once the email is delivered - congratulations, your app is live.
 
 .. image:: ../../images/app-indicator-push/step8.png
 
-Install your newly created app to your LaMetric Time device!
+Now install your newly created app to your LaMetric Time device!
 
 .. image:: ../../images/app-indicator-push/app-step1.png
 .. image:: ../../images/app-indicator-push/app-step2.png
 .. image:: ../../images/app-indicator-push/app-step3.png
 .. image:: ../../images/app-indicator-push/app-step4.png
 
-At this stage it should be active on LaMetric Time, displaying default value.
+At this stage it should be active on LaMetric Time displaying default value.
 
 .. image:: ../../images/app-indicator-push/value-0.jpg
 
@@ -74,15 +74,16 @@ Fortunately, there is curl example already on your app details page. Lets see ho
     -H "Accept: application/json" \
     -H "X-Access-Token: NzM2ZmI3ZTQyZDI0ZDk4OWExNTJmNTc1ZGQ3MzYyMjg2NDkwODA1MDMwODQ0ODAzNjMyNTgxYmI1YmIwYjBiOA==" \
     -H "Cache-Control: no-cache" \
+    -k \
     -d '{
         "frames": [
             {
-                "text": "0",
+                "text": "1",
                 "icon": 3219
             }
         ]
     }' \
-    https://developer.lametric.com/api/v1/dev/widget/update/com.lametric.22e45a6407da88c0c938a8aaf8f7406f/1
+    https://192.168.88.248:4343/api/v1/dev/widget/update/com.lametric.22e45a6407da88c0c938a8aaf8f7406f/1
 
 .. note::
     Don't forget to replace X-Access-Token and URL with values specific to your app. You can find them on the app details page on "Published V1" tab.
