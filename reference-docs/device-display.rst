@@ -392,3 +392,6 @@ Since API 2.1.0::
             "path": "/api/v2/device/display"
         }
     }
+
+Note:
+  All timestamps must be given in GMT.
