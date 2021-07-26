@@ -48,6 +48,14 @@ Since version 2.1.0 ``screensaver`` node has been added::
 	{
 	  "brightness": <0-100>,
 	  "brightness_mode": "[auto|manual]",
+	  "brightess_limit": {
+	    "max": 75,
+	    "min": 2
+	  }
+	  "brightness_range": {
+	   "max": 100
+	   "min": 0
+	  }
 	  "height": 8,
 	  "width": 37,
 	  "type": "mixed",
@@ -56,8 +64,10 @@ Since version 2.1.0 ``screensaver`` node has been added::
 	    "modes": {
 	      "time_based": {
 	        "enabled": [true|false]
-	        "start_time": "<time>"
-	        "end_time": "<time>",
+	        "start_time": "<time in GMT>"
+	        "end_time": "<time in GMT>",
+	        "local_start_time": "<local time>",
+	        "local_end_time": "<local time>"
 	      },
 	      "when_dark": {
 	        "enabled": [true|false]
@@ -68,22 +78,45 @@ Since version 2.1.0 ``screensaver`` node has been added::
 	}
 
 
-=======================  =============  ============================================================================
-Property                 Type           Description 
-=======================  =============  ============================================================================
-``brightness``           Integer        Brightness of the display. Valid values [0..100]
-``brighrness_mode``      Enum           ["auto", "manual"]
++----------------------+----------------+----------------------------------------------------------------------------+
+| Property             | Type           |  Description                                                               |
++======================+================+============================================================================+
+| ``brightness``       | Integer        |  Brightness of the display. Valid values [0..100]                          |
++----------------------+----------------+----------------------------------------------------------------------------+
+| ``brighrness_mode``  | Enum           | ["auto", "manual"]                                                         |
+|                      |                |  - *auto* – automatically adjust brightness                                | 
+|                      |                |  - *manual* – brightness is configured by the user                         |
++----------------------+----------------+----------------------------------------------------------------------------+
+| ``width``            | Integer        |  Width of the display in pixels                                            |
++----------------------+----------------+----------------------------------------------------------------------------+
+| ``height``           | Integer        |  Height of the display in pixels                                           |
++----------------------+----------------+----------------------------------------------------------------------------+
+| ``type``             | Enum           |  Display type. Valid values are : ["monochrome", "grayscale", "color",     | 
+|                      |                |  "mixed"]                                                                  |
++----------------------+----------------+----------------------------------------------------------------------------+
 
-									    - *auto* – automatically adjust brightness
-									    - *manual* – brightness is configured by the user
-``width``                Integer        Width of the display in pixels
-``height``               Integer        Height of the display in pixels
-``type``                 Enum           Display type. Valid values are : ["monochrome", "grayscale", "color", "mixed"] 
+
 
 **Since API version 2.1.0**
---------------------------------------------------------------------------------------------------------------------
-``screensaver``          Object	        Object for screensaver configuration (off, when dark, timebased).
-=======================  =============  ============================================================================
+
++----------------------+----------------+----------------------------------------------------------------------------+
+| ``screensaver``      | Object	        | Object for screensaver configuration (off, when dark, timebased).          |
++----------------------+----------------+----------------------------------------------------------------------------+
+| ``brightness_range`` | Object         | *Optional*.                                                                |
+|                      |                |                                                                            |
+|                      |                | | The minimum and the maximum values of a brightness.                      |
+|                      |                | | When setting new brightness, the new value must be in this range.        |
+|                      |                | | Usually valid values fall between 0 and 100.                             |
++----------------------+----------------+----------------------------------------------------------------------------+
+| ``brightness_limit`` | Object         | *Optional*.                                                                |
+|                      |                |                                                                            |
+|                      |                | | Brightnesss limitations for current conditions.                          | 
+|                      |                | | When a device is powered from a computer, we can limit the maximum       |
+|                      |                | | brightness value in order to not exceed the maximum power consumption of |  
+|                      |                | | a device to avoid unexpected power-offs. In this case the new value of   | 
+|                      |                | | brightness can not exceed the *max* value of this limit.                 |
++----------------------+----------------+----------------------------------------------------------------------------+
+
 
 
 **Screensaver**
@@ -99,6 +132,26 @@ Property                 Type           Description
                                         - *when_dark* – activates when light sensor senses darkness.
 ``widget``               String         UUID of the widget that should be activated when screensaver is active. 
                                         Currently clock is supported.
+=======================  =============  ============================================================================
+
+**brightness_range**
+
+=======================  =============  ============================================================================
+Property                 Type           Description 
+=======================  =============  ============================================================================
+``max``                  Integer        Maximum possible brightness value
+``min``                  Integer        Minimum possible brightness value
+=======================  =============  ============================================================================
+
+
+**brightness_limit**
+
+=======================  =============  ============================================================================
+Property                 Type           Description 
+=======================  =============  ============================================================================
+``max``                  Integer        Current maximum brightness value limit. Can be less than *max* value of 
+                                        ``brightness_range`` (for example, due to the power comsumption limitation).
+``min``                  Integer        Current minimum brightness value limit
 =======================  =============  ============================================================================
 
 
@@ -126,6 +179,14 @@ cURL::
 
 	{
 	  "brightness": 100,
+	  "brightness_limit": {
+	    "max": 100,
+	    "min": 2
+	  },
+	  "brightness_range": {
+	    "max": 100,
+	    "min": 0
+	  },
 	  "brightness_mode": "auto",
 	  "height": 8,
 	  "width": 37,
@@ -137,6 +198,8 @@ cURL::
 	        "enabled": true,
 	        "end_time": "18:42:56",
 	        "start_time": "18:41:53"
+	        "start_local_time": "20:41:53"
+	        "end_local_time": "20:42:56"
 	      },
 	      "when_dark": {
 	        "enabled": false
@@ -251,7 +314,7 @@ cURL::
                 "brightness_mode": "auto",
                 "height": 8,               
                 "type": "mixed",
-                "width": 37
+                "width": 37                
             },
             "path": "/api/v2/device/display"
         }
@@ -273,27 +336,38 @@ Since API 2.1.0::
                 "height": 8,
                 "brightness": 40,
                 "brightness_mode": "auto",                
+                "brightness_range": {
+                    "max": 100,
+                    "min": 0
+                },
+                "brightness_limit": {
+                    "max": 100,
+                    "min": 2
+                },
                 "screensaver": {
-                    "enabled": true,
+                   "enabled": true,
                     "modes": {
                         "time_based": {
-                            "enabled": false,
-                            "end_time": "19:59:59",
-                            "start_time": "20:00:00"
+                            "enabled": true,
+                            "end_time": "09:21:00",
+                            "local_end_time": "12:21:00",
+                            "local_start_time": "12:20:00",
+                            "start_time": "09:20:00"
                         },
                         "when_dark": {
-                            "enabled": true
+                            "enabled": false
                         }
                     },
-                    "widget": "08b8eac21074f8f7e5a29f2855ba8060"
+                   "widget": "486f5adeee1511ebab78273c1141c9c8"
                 },
-
             },
             "path": "/api/v2/device/display"
         }
     }
 
-Example 2. Let's set time based screensaver from 9:00 PM to 6:00 AM.
+Example 2. Let's set time based screensaver from 9:00 PM to 6:00 AM. First of all, we need to convert our times to GMT.
+For example, if we are in GMT+2 timezone, we need to set activation time to 19:00 and deactivation time to 4:00 (subtract 2 hours from
+9 pm and 6 am)
 
 **Request**
 
@@ -310,8 +384,8 @@ REST::
             "mode": "time_based",
             "mode_params": {
                 "enabled": true,
-                "start_time": "21:00:00",
-                "end_time": "06:00:00"
+                "start_time": "19:00:00",
+                "end_time": "04:00:00"
             }
         }
     }
@@ -327,8 +401,8 @@ cURL::
                 "mode": "time_based",
                 "mode_params": {
                     "enabled": true,
-                    "start_time": "21:00:00",
-                    "end_time": "06:00:00"
+                    "start_time": "19:00:00",
+                    "end_time": "4:00:00"
                 }
             }
         }' https://<device ip address>:4343/api/v2/device/display
@@ -372,14 +446,24 @@ Since API 2.1.0::
                 "width": 37
                 "height": 8,
                 "brightness": 100,
-                "brightness_mode": "auto",                
+                "brightness_mode": "auto",
+                "brightness_range": {
+                    "max": 100,
+                    "min": 0
+                },
+                "brightness_limit": {
+                    "max": 100,
+                    "min": 2
+                },                
                 "screensaver": {
                     "enabled": true,
                     "modes": {
                         "time_based": {
                             "enabled": true,
-                            "start_time": "21:00:00"
-                            "end_time": "06:00:00",
+                            "start_time": "19:00:00"
+                            "end_time": "4:00:00",
+                            "local_start_time": "6:00:00",
+                            "local_end_time": "21:00:00"                            
                         },
                         "when_dark": {
                             "enabled": false
