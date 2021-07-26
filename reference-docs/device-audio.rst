@@ -18,11 +18,23 @@ Returns audio state such as volume.
 
 Response
 ^^^^^^^^
-=======================  =============  ============================================================================
-Property                 Type           Description 
-=======================  =============  ============================================================================
-volume                   Integer        Current volume [0..100]
-=======================  =============  ============================================================================
++-----------------------+--------------+-----------------------------------------------------------------------------+
+| Property              | Type         | Description                                                                 |
++=======================+==============+=============================================================================+
+| ``volume``            | Integer      | Current volume [0..100]                                                     |
++-----------------------+--------------+-----------------------------------------------------------------------------+
+| ``volume_range``      | Object       |  *Optional*. Minimum and maximum volume values.                             |
+|                       |              |   - ``min`` is the minimum volume value                                     |
+|                       |              |   - ``max`` is the maximum volume value                                     |
++-----------------------+--------------+-----------------------------------------------------------------------------+
+| ``volume_limit``      | Object       | *Optional*. Volume value limits                                             |
+|                       |              |  - ``min`` stands for *lower* volume limit                                  |
+|                       |              |  - ``max`` stands for *upper* volume limit                                  |
+|                       |              | | Device can limit its volume when it is powered from a computer in order   |
+|                       |              | | to limit its power consumption and avoid unexpected power-offs. You will  |
+|                       |              | | get error when try to set ``volume`` value that does not fall into        | 
+|                       |              | | this range.                                                               |
++-----------------------+--------------+-----------------------------------------------------------------------------+
 
 
 Examples
@@ -41,7 +53,15 @@ Examples
 	Server: lighttpd/1.4.35
 
 	{ 
-	    "volume" : 100 
+	    "volume" : 69,
+	    "volume_range": {
+	        "max": 100,
+	        "min": 0
+	    },	    
+	    "volume_limit": {
+	        "max": 69,
+	        "min": 0
+	    }
 	}
 
 ----
@@ -64,7 +84,7 @@ Body
 ::
 
 	{
-	    "volume" : 100
+	    "volume" : 69
 	}
 
 
@@ -81,7 +101,15 @@ Response
 	{ 
 	    "success" : { 
 	        "data" : { 
-	            "volume" : 100
+	            "volume" : 69,
+	            "volume_range": {
+	               "max": 100,
+	               "min": 0
+	            },	    
+	            "volume_limit": {
+	               "max": 69,
+	               "min": 0
+	            }	            
 	        }, 
 	        "path" : "/api/v2/device/audio" 
 	    } 
