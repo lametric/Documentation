@@ -54,7 +54,7 @@ mode                     String         Current device mode. Can be one of "auto
 
                                         - *auto* - auto scroll mode, when device switch between apps automatically
                                         - *manual* - click to scroll mode, when user can manually switch between apps
-										- *schedule* - mode when apps get switched according to a schedule
+									    - *schedule* - mode when apps get switched according to a schedule
                                         - *kiosk* - kiosk mode when single app is locked on the device.
 audio                    Object         Audio state. Allows to get current volume
 bluetooth                Object         Bluetooth state
