@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'LaMetric'
-copyright = 'Smart Atoms Ltd.'
+copyright = 'Smart Atoms Limited'
 author = 'Dmytro Baryskyy'
 
 # The version info for the project you're documenting, acts as replacement for
