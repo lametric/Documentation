@@ -51,7 +51,8 @@ Response
           "widgets" : {
             "<widget_uuid>" : {
               "index":<position>,
-              "package": "<package1>"
+              "package": "<package1>",
+              "visible": <bool>    // since API 2.3.0
             }
           },
           "actions" : {
@@ -121,7 +122,8 @@ cURL::
                 "widgets": {
                       "08b8eac21074f8f7e5a29f2855ba8060": {
                           "index": 0,
-                          "package": "com.lametric.clock"
+                          "package": "com.lametric.clock",
+                          "visible": true
                       }
                 }
             },
@@ -314,7 +316,8 @@ Response
         "widgets": {
               "<uuid>": {
                   "index": <order no>,
-                  "package": "<string>"
+                  "package": "<string>",
+                  "visible": <bool>   // since API 2.3.0
               }
         }
     }
@@ -356,6 +359,8 @@ Response
 ---------------- --------------- -----------------------------------------------------------
 ``index``        Integer         Position of the widget when switching between them with buttons or API. Can be -1.
 ``package``      String          Id of the LaMetric Time app this widget is an instance of
+``visible``      Boolean         Since API 2.3.0. True if widget is currently displayed on the screen,
+                                 false otherwise.
 ================ =============== ===========================================================
 
 
@@ -407,7 +412,8 @@ cURL::
         "widgets": {
               "08b8eac21074f8f7e5a29f2855ba8060": {
                   "index": 0,
-                  "package": "com.lametric.clock"
+                  "package": "com.lametric.clock",
+                  "visible": true
               }
         }
     }

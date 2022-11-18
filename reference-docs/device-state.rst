@@ -49,7 +49,12 @@ id                       String         Id of the device on the cloud
 name                     String         User specified name of the device
 serial_number            String         Device serial number
 os_version               String         Software version in format <major>.<minor>.<patch>
-model                    String         Model number
+update_available         Object         Since API 2.3.0. Optional. If present, means that firmware upgrade is available for the device.
+model                    String         Model number. Can be one of "LM 37X8", "sa8", "sa5"
+
+                                        - *"LM 37X8"* stands for LaMetric TIME devices, produced before 2022.
+                                        - *"sa8"* stands for LaMetric TIME devices, produced in 2022 and later
+                                        - *"sa5"* snands for LaMetric SKY devices.
 mode                     String         Current device mode. Can be one of "auto", "manual", "schedule" or "kiosk"
 
                                         - *auto* - auto scroll mode, when device switch between apps automatically
@@ -68,23 +73,26 @@ Examples
 
 **Request**::
 
-	GET http://192.168.0.239:8080/api/v2/device
+    GET http://192.168.0.239:8080/api/v2/device
+    
+    Authorization: Basic <Base64("dev:Device API Key")>
+    Accept: application/json
 
 **Response**::
 
 	HTTP/1.1 200 OK
-	CONTENT-TYPE: application/json;charset=UTF8
-	Transfer-Encoding: chunked
-	Date: Thu, 23 Jun 2016 16:33:07 GMT
-	Server: lighttpd/1.4.35
+	Content-Type: application/json;charset=UTF8
 
 	{
 	    "id" : "1",
 	    "name" : "LM0001",
 	    "serial_number" : "SA150600000100W00BS9",
-	    "os_version" : "1.6.0",
 	    "mode" : "manual",
-	    "model" : "LM 37X8",
+	    "model" : "LM 37X8",		
+	    "os_version" : "2.3.0",
+	    "update_available": {
+	        "version": "2.3.1"
+	    },
 	    "audio" : {
 	        "volume" : 100
 	    },
@@ -147,3 +155,72 @@ Examples
 
 
 ----
+
+Change Device Mode
+------------------
+================  ===========================================
+URL               /api/v2/device
+Method            PUT
+Authentication    basic
+API Version       2.3.1
+================  ===========================================
+
+Description
+^^^^^^^^^^^
+Allows changing device mode to one of four supported ones: manual, auto, schedule, kiosk.
+
+Body
+^^^^
+::
+
+    {
+        "mode": "[manual|auto|schedule|kiosk]"
+    }
+
+
+Response
+^^^^^^^^
+::
+	
+    {
+        "success" : {
+            "data" : { "mode": "[manual|auto|schedule|kiosk]" },
+            "path" : "/api/v2/device"
+        }
+    }
+
+Example. Enable automatic app switching mode
+^^^^^^^
+**Request**
+
+REST
+::
+
+    PUT https://<device ip address>:4343/api/v2/device
+    
+    Authorization: Basic <Base64("dev:Device API Key")>
+    Accept: application/json
+    Content-Type: application/json
+    
+    {
+        "mode": "auto"
+    }
+
+cURL
+::
+    $ curl --location --request PUT 'https://192.168.170.14:4343/api/v2/device' \
+      -u "dev:<device API key>" -k \
+      --header 'Accept: application/json' \
+      --header 'Content-Type: application/json' \
+      --data-raw '{ "mode": "auto" }'
+
+**Response**
+::
+    HTTP/1.1 200 OK
+
+    {
+        "success": {
+            "data": { "mode": "auto" },
+            "path": "/api/v2/device"
+        }
+    }
