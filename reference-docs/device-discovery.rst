@@ -8,7 +8,7 @@ There are multiple ways to discover LaMetric devices in local network. Discoveri
 1. Cloud API
 -------------
 
-To get the local IP address of the LaMetric Time device do these steps:
+To get the local IP address of the LaMetric device do these steps:
 
 1. Login to LaMetric Cloud
 2. Get list of user's devices
@@ -68,10 +68,10 @@ For more details check `Authorization <device-authorization.html>`_ section.
 	  </root>
 
 
-LaMetric Time public API is located on ports 8080 and 4343. You should have api_key to access it (see `Authorization <device-authorization.html>`_ section for more details).
+LaMetric device public API is located on ports 8080 and 4343. You should have api_key to access it (see `Authorization <device-authorization.html>`_ section for more details).
 
 
-1.3. If you have api_key on this stage you can check if LaMetric Time API works. ::
+1.3. If you have api_key on this stage you can check if LaMetric device API works. ::
 
 	curl -i	http://192.168.88.153:8080/api/v2 --user dev:<api_key>
 
@@ -82,24 +82,33 @@ LaMetric Time public API is located on ports 8080 and 4343. You should have api_
 	Server: lighttpd/1.4.35
 
 	{
-	  "api_version" : "2.0.0",
-	  "endpoints" : {
-	    "audio_url" : "http://192.168.88.153:8080/api/v2/device/audio",
-	    "bluetooth_url" : "http://192.168.88.153:8080/api/v2/device/bluetooth",
-	    "concrete_notification_url" : "http://192.168.88.153:8080/api/v2/device/notifications{/:id}",
-	    "current_notification_url" : "http://192.168.88.153:8080/api/v2/device/notifications/current",
-	    "device_url" : "http://192.168.88.153:8080/api/v2/device",
-	    "display_url" : "http://192.168.88.153:8080/api/v2/device/display",
-	    "notifications_url" : "http://192.168.88.153:8080/api/v2/device/notifications",
-	    "widget_update_url" : "http://192.168.88.153:8080/api/v2/widget/update{/:id}",
-	    "wifi_url" : "http://192.168.88.153:8080/api/v2/device/wifi"
+	  "api_version": "2.3.0",
+	  "endpoints": {
+	      "apps_action_url": "http://192.168.88.153:8080/api/v2/device/apps/{:id}/widgets/{:widget_id}/actions",
+	      "apps_get_url": "http://192.168.88.153:8080/api/v2/device/apps/{:id}",
+	      "apps_list_url": "http://192.168.88.153:8080/api/v2/device/apps",
+	      "apps_switch_next_url": "http://192.168.88.153:8080/api/v2/device/apps/next",
+	      "apps_switch_prev_url": "http://192.168.88.153:8080/api/v2/device/apps/prev",
+	      "apps_switch_url": "http://192.168.88.153:80803/api/v2/device/apps/{:id}/widgets/{:widget_id}/activate",
+	      "audio_url": "http://192.168.88.153:8080/api/v2/device/audio",
+	      "bluetooth_url": "http://192.168.88.153:8080/api/v2/device/bluetooth",
+	      "concrete_notification_url": "http://192.168.88.153:8080/api/v2/device/notifications/{:id}",
+	      "current_notification_url": "http://192.168.88.153:8080/api/v2/device/notifications/current",
+	      "device_url": "http://192.168.88.153:8080/api/v2/device",
+	      "display_url": "http://192.168.88.153:8080/api/v2/device/display",
+	      "notifications_url": "http://192.168.88.153:8080/api/v2/device/notifications",
+	      "stream_start_url": "http://192.168.88.153:8080/api/v2/device/stream/start",
+	      "stream_stop_url": "http://192.168.88.153:8080/api/v2/device/stream/stop",
+	      "stream_url": "http://192.168.88.153:8080/api/v2/device/stream",
+	      "widget_update_url": "http://192.168.88.153:8080/api/v2/widget/update/{:id}",
+	      "wifi_url": "http://192.168.88.153:8080/api/v2/device/wifi"
 	  }
 	}
 
 We recommend to use secure way of accessing the API via https using port 4343::
 
 	curl -i -H "Authorization: Basic dXNlcjpiZTBmNTNhYTQ1NzdjMzUxMDE3OGY2Mzc3Yjk3NTEwY2U0ZTA2ZGQ3ZTBjYTlkMDRjNDMyMDRiY2RlZTllMjY2"
-	https://192.168.88.153:4343/api/v2 --insecure
+	https://192.168.88.153:4343/api/v2 -k
 
 	HTTP/1.1 200 OK
 	CONTENT-TYPE: application/json;charset=UTF8
@@ -108,18 +117,56 @@ We recommend to use secure way of accessing the API via https using port 4343::
 	Server: lighttpd/1.4.35
 
 	{
-	  "api_version" : "2.0.0",
-	  "endpoints" : {
-	    "audio_url" : "https://192.168.88.153:4343/api/v2/device/audio",
-	    "bluetooth_url" : "https://192.168.88.153:4343/api/v2/device/bluetooth",
-	    "concrete_notification_url" : "https://192.168.88.153:4343/api/v2/device/notifications{/:id}",
-	    "current_notification_url" : "https://192.168.88.153:4343/api/v2/device/notifications/current",
-	    "device_url" : "https://192.168.88.153:4343/api/v2/device",
-	    "display_url" : "https://192.168.88.153:4343/api/v2/device/display",
-	    "notifications_url" : "https://192.168.88.153:4343/api/v2/device/notifications",
-	    "widget_update_url" : "https://192.168.88.153:4343/api/v2/widget/update{/:id}",
-	    "wifi_url" : "https://192.168.88.153:4343/api/v2/device/wifi"
-	  }
+	    "api_version": "2.3.0",
+	    "endpoints": {
+	        "apps_action_url": "https://192.168.88.153:4343/api/v2/device/apps/{:id}/widgets/{:widget_id}/actions",
+	        "apps_get_url": "https://192.168.88.153:4343/api/v2/device/apps/{:id}",
+	        "apps_list_url": "https://192.168.88.153:4343/api/v2/device/apps",
+	        "apps_switch_next_url": "https://192.168.88.153:4343/api/v2/device/apps/next",
+	        "apps_switch_prev_url": "https://192.168.88.153:4343/api/v2/device/apps/prev",
+	        "apps_switch_url": "https://192.168.88.153:4343/api/v2/device/apps/{:id}/widgets/{:widget_id}/activate",
+	        "audio_url": "https://192.168.88.153:4343/api/v2/device/audio",
+	        "bluetooth_url": "https://192.168.88.153:4343/api/v2/device/bluetooth",
+	        "concrete_notification_url": "https://192.168.88.153:4343/api/v2/device/notifications/{:id}",
+	        "current_notification_url": "https://192.168.88.153:4343/api/v2/device/notifications/current",
+	        "device_url": "https://192.168.88.153:4343/api/v2/device",
+	        "display_url": "https://192.168.88.153:4343/api/v2/device/display",
+	        "notifications_url": "https://192.168.88.153:4343/api/v2/device/notifications",
+	        "stream_start_url": "https://192.168.88.153:4343/api/v2/device/stream/start",
+	        "stream_stop_url": "https://192.168.88.153:4343/api/v2/device/stream/stop",
+	        "stream_url": "https://192.168.88.153:4343/api/v2/device/stream",
+	        "widget_update_url": "https://192.168.88.153:4343/api/v2/widget/update/{:id}",
+	        "wifi_url": "https://192.168.88.153:4343/api/v2/device/wifi"
+	    }
 	}
 
-``--insecure`` option must be added because of the random IP address LaMetric may have, and it is not possible to verify  host stored inside the certificate.
+``-k`` option must be added because of the random IP address LaMetric may have, and it is not possible to verify host stored inside the certificate.
+
+3. mDNS
+-------
+
+Modern LaMetric devices produced after 2022 support mDNS discovery.
+
+To find a LaMetric device in your local network look for ``_lametric-api._tcp.`` service.
+
+Text Records
+
+====== ======= ======================================
+Record Type    Description
+====== ======= ======================================
+id     String  Unique device identifier
+
+md     Enum    [sa5, sa8] – device model
+
+               ``sa5`` – LaMetric SKY
+
+               ``sa8`` – LaMetric Time 2022+
+
+nm     String  Device Name
+
+ss     Boolean [0, 1] 
+
+               ``1`` – Streaming API is available
+
+               ``0`` – Streaming API is not available
+====== ======= ======================================

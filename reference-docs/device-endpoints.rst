@@ -31,6 +31,11 @@ PUT        /api/v2/device/apps/next                           Switches to next a
 PUT        /api/v2/device/apps/prev                           Switches to previous app
 POST       /api/v2/device/apps/:package/widgets/:id/actions   Sends application specific action to widget
 PUT        /api/v2/device/apps/:package/widgets/:id/activate  Activates specific widget (app instance)
+**Added in API 2.3.0**
+----------------------------------------------------------------------------------------------------------------------------
+GET        /api/v2/device/stream                              Returns streaming status
+PUT        /api/v2/device/stream/start                        Start streaming
+PUT        /api/v2/device/stream/stop                         Stop streaming
 =========  =================================================  ==============================================================
 
 
@@ -69,22 +74,25 @@ Response Example
 	Server: lighttpd/1.4.35
 
 	{
-	  "api_version": "2.1.0",
+	  "api_version": "2.3.0",
 	  "endpoints": {
-	    "apps_action_url": "http://192.168.3.13:8080/api/v2/device/apps/{:id}/widgets/{:widget_id}/actions",
-	    "apps_get_url": "http://192.168.3.13:8080/api/v2/device/apps/{:id}",
-	    "apps_list_url": "http://192.168.3.13:8080/api/v2/device/apps",
-	    "apps_switch_next_url": "http://192.168.3.13:8080/api/v2/device/apps/next",
-	    "apps_switch_prev_url": "http://192.168.3.13:8080/api/v2/device/apps/prev",
-	    "apps_switch_url": "http://192.168.3.13:8080/api/v2/device/apps/{:id}/widgets/{:widget_id}/activate",
-	    "audio_url": "http://192.168.3.13:8080/api/v2/device/audio",
-	    "bluetooth_url": "http://192.168.3.13:8080/api/v2/device/bluetooth",
-	    "concrete_notification_url": "http://192.168.3.13:8080/api/v2/device/notifications/{:id}",
-	    "current_notification_url": "http://192.168.3.13:8080/api/v2/device/notifications/current",
-	    "device_url": "http://192.168.3.13:8080/api/v2/device",
-	    "display_url": "http://192.168.3.13:8080/api/v2/device/display",
-	    "notifications_url": "http://192.168.3.13:8080/api/v2/device/notifications",
-	    "wifi_url": "http://192.168.3.13:8080/api/v2/device/wifi"
+	      "apps_action_url": "http://192.168.88.153:8080/api/v2/device/apps/{:id}/widgets/{:widget_id}/actions",
+	      "apps_get_url": "http://192.168.88.153:8080/api/v2/device/apps/{:id}",
+	      "apps_list_url": "http://192.168.88.153:8080/api/v2/device/apps",
+	      "apps_switch_next_url": "http://192.168.88.153:8080/api/v2/device/apps/next",
+	      "apps_switch_prev_url": "http://192.168.88.153:8080/api/v2/device/apps/prev",
+	      "apps_switch_url": "http://192.168.88.153:80803/api/v2/device/apps/{:id}/widgets/{:widget_id}/activate",
+	      "audio_url": "http://192.168.88.153:8080/api/v2/device/audio",
+	      "bluetooth_url": "http://192.168.88.153:8080/api/v2/device/bluetooth",
+	      "concrete_notification_url": "http://192.168.88.153:8080/api/v2/device/notifications/{:id}",
+	      "current_notification_url": "http://192.168.88.153:8080/api/v2/device/notifications/current",
+	      "device_url": "http://192.168.88.153:8080/api/v2/device",
+	      "display_url": "http://192.168.88.153:8080/api/v2/device/display",
+	      "notifications_url": "http://192.168.88.153:8080/api/v2/device/notifications",
+	      "stream_start_url": "http://192.168.88.153:8080/api/v2/device/stream/start",
+	      "stream_stop_url": "http://192.168.88.153:8080/api/v2/device/stream/stop",
+	      "stream_url": "http://192.168.88.153:8080/api/v2/device/stream",
+	      "wifi_url": "http://192.168.88.153:8080/api/v2/device/wifi"
 	  }
 	}
 
