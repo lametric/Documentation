@@ -20,4 +20,5 @@ This is where you can find API-level documentation for sending notifications to 
     device-audio
     device-bluetooth
     device-wifi
+    device-stream
 

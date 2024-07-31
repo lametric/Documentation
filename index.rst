@@ -31,7 +31,7 @@ We are constantly improving and expanding the docs so check back often!
     
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :caption: Reference
 
     reference-docs/lametric-cloud-reference
