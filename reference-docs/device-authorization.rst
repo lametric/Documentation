@@ -6,7 +6,7 @@ Authorization
 
 Overview
 --------
-LaMetric devices use basic authorization to simplify access to the device API. Authorization credentials consist of word "dev" as a user name and API key as a password. 
+LaMetric devices use basic authorization to simplify access to the device API. Authorization credentials consist of the word "dev" as a user name and API key as a password. 
 
 ::
 
@@ -17,8 +17,8 @@ Get the API key
 ---------------
 There are multiple ways of getting the API key: 
 
-1. :ref:`Manualy via LaMetric mobile app <get-the-API-key-via-mobile>` (only for 2022+ devices)
-2. :ref:`Manualy via LaMetric Developer portal <get-the-API-key-via-devportal>`
+1. :ref:`Manually via LaMetric mobile app <get-the-API-key-via-mobile>` (only for 2022+ devices)
+2. :ref:`Manually via LaMetric Developer portal <get-the-API-key-via-devportal>`
 3. :ref:`Programmatically via the Cloud API <get-the-API-key-programmatically>`.
 
 
@@ -35,7 +35,7 @@ If you have LaMetric device produced after 2022+ you may get the API key from th
 
 .. image:: ../images/device-authorization/device-settings-screen.png
 
-3. Long press on the key to copy it, or, if it is not have been generated yet – press on the "Generate API Key" button.
+3. Long press on the key to copy it, or, if it has not been generated yet – press on the "Generate API Key" button.
 
 .. image:: ../images/device-authorization/device-api-key-screen.png
    
@@ -51,7 +51,7 @@ Get the API Key via Developer Portal
 
 	<a href="https://developer.lametric.com" target="_blank">LaMetric Developer Portal</a>
 
-API key also can be get from the |LaMetric Developer Portal|. In order to do that:
+API key can also be obtained from the |LaMetric Developer Portal|. In order to do that:
 
 1. Open |LaMetric Developer Portal|
 2. Login with your LaMetric Account
