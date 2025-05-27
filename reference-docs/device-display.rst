@@ -92,7 +92,7 @@ Since version 2.1.0 ``screensaver`` node has been added::
 | ``height``           | Integer        |  Height of the display in pixels                                           |
 +----------------------+----------------+----------------------------------------------------------------------------+
 | ``type``             | Enum           |  Display type. Valid values are : ["monochrome", "grayscale", "color",     | 
-|                      |                |  "mixed"]                                                                  |
+|                      |                |  "mixed", "full_rgb"]                                                                  |
 +----------------------+----------------+----------------------------------------------------------------------------+
 
 
