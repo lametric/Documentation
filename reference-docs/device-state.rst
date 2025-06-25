@@ -54,7 +54,7 @@ model                    String         Model number. Can be one of "LM 37X8", "
 
                                         - *"LM 37X8"* stands for LaMetric TIME devices, produced before 2022.
                                         - *"sa8"* stands for LaMetric TIME devices, produced in 2022 and later
-                                        - *"sa5"* snands for LaMetric SKY devices.
+                                        - *"sa5"* stands for LaMetric SKY devices.
 mode                     String         Current device mode. Can be one of "auto", "manual", "schedule" or "kiosk"
 
                                         - *auto* - auto scroll mode, when device switch between apps automatically
