@@ -150,7 +150,7 @@ Property              Type             Description
       }
 
      - *category* – sound category. Can be *notifications* or *alarms*.
-     - *id* – sound ID. Full list of notification ids::
+     - *id* – sound ID. Full list of sound ids::
 
 		bicycle
 		car
